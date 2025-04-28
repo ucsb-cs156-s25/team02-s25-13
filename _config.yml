@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s25/team02-s25-13
 owner: ucsb-cs156-s25
 repo_name: team02-s25-13
-pull_requests: [{"author":{"id":"MDQ6VXNlcjY1MDUwMDUz","is_bot":false,"login":"connersiou","name":""},"headRefName":"Conner-UCSBOrganization-fixtures","number":63,"title":"Conner - create fixtures for UCSBOrganization database","url":"https://github.com/ucsb-cs156-s25/team02-s25-13/pull/63"},{"author":{"id":"MDQ6VXNlcjY1MDUwMDUz","is_bot":false,"login":"connersiou","name":""},"headRefName":"Conner-UCSBOrganization-backend","number":62,"title":"Conner - copy backend CRUD operations from team01 for the UCSBOrganization table","url":"https://github.com/ucsb-cs156-s25/team02-s25-13/pull/62"}]
+pull_requests: [{"author":{"id":"MDQ6VXNlcjY1MDUwMDUz","is_bot":false,"login":"connersiou","name":""},"headRefName":"Conner-UCSBOrganization-fixtures","number":63,"title":"Conner - create fixtures for UCSBOrganization database","url":"https://github.com/ucsb-cs156-s25/team02-s25-13/pull/63"}]
