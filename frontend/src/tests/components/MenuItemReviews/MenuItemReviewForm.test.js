@@ -47,7 +47,7 @@ describe("MenuItemReviewForm tests", () => {
       <QueryClientProvider client={queryClient}>
         <Router>
           <MenuItemReviewFormForm
-            initialContents={menuItemReviewFixtures.oneReview}
+            initialContents={menuItemReviewFixtures.oneMenuItemReview}
           />
         </Router>
       </QueryClientProvider>,

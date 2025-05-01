@@ -1,5 +1,5 @@
 const menuItemReviewFixtures = {
-  oneReview: {
+  oneMenuItemReview: {
     id: 5,
     itemId: 1,
     reviewerEmail: "cgaucho@ucsb.edu",
@@ -7,7 +7,7 @@ const menuItemReviewFixtures = {
     dateReviewed: "2025-04-28T21:28:44.426",
     comments: "mac and cheese needs more cheese",
   },
-  threeReviews: [
+  threeMenuItemReviews: [
     {
       id: 5,
       itemId: 1,
