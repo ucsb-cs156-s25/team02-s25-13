@@ -67,16 +67,16 @@ function RecommendationRequestForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="professorEmail">Professor Email</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-professorEmail"}
+          // data-testid={testIdPrefix + "-professorEmail"}
           id="professorEmail"
           type="text"
           isInvalid={Boolean(errors.professorEmail)}
           {...register("professorEmail", {
             required: "Professor Email is required.",
-            maxLength: {
-              value: 255,
-              message: "Max length 255 characters",
-            },
+            // maxLength: {
+            //   value: 255,
+            //   message: "Max length 255 characters",
+            // },
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -87,16 +87,16 @@ function RecommendationRequestForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="explanation">Explanation</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-explanation"}
+          // data-testid={testIdPrefix + "-explanation"}
           id="explanation"
           type="text"
-          isInvalid={Boolean(errors.explanation)}
+          // isInvalid={Boolean(errors.explanation)}
           {...register("explanation", {
             required: "Explanation is required.",
-            maxLength: {
-              value: 255,
-              message: "Max length 255 characters",
-            },
+            // maxLength: {
+            //   value: 255,
+            //   message: "Max length 255 characters",
+            // },
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -107,7 +107,7 @@ function RecommendationRequestForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="dateRequested">Date Requested (in UTC)</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-dateRequested"}
+          // data-testid={testIdPrefix + "-dateRequested"}
           id="dateRequested"
           type="datetime-local"
           isInvalid={Boolean(errors.dateRequested)}
@@ -124,7 +124,7 @@ function RecommendationRequestForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="dateNeeded">Date Needed (in UTC)</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-dateNeeded"}
+          // data-testid={testIdPrefix + "-dateNeeded"}
           id="dateNeeded"
           type="datetime-local"
           isInvalid={Boolean(errors.dateNeeded)}
@@ -142,14 +142,15 @@ function RecommendationRequestForm({
           Done? (if checked, job will be marked as done)
         </Form.Label>
         <Form.Check
-          data-testid={testIdPrefix + "-done"}
+          // data-testid={testIdPrefix + "-done"}
           type="checkbox"
           id="done"
           {...register("Done")}
         />
       </Form.Group>
 
-      <Button type="submit" data-testid={testIdPrefix + "-submit"}>
+      <Button type="submit">
+      {/* <Button type="submit" data-testid={testIdPrefix + "-submit"}> */}
         {buttonLabel}
       </Button>
       <Button
