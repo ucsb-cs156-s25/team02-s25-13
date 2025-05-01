@@ -96,19 +96,49 @@ function RecommendationRequestForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="description">Description</Form.Label>
+        <Form.Label htmlFor="dateRequested">Date Requested (in UTC)</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-description"}
-          id="description"
-          type="text"
-          isInvalid={Boolean(errors.description)}
-          {...register("description", {
-            required: "Description is required.",
+          data-testid={testIdPrefix + "-dateRequested"}
+          id="dateRequested"
+          type="datetime-local"
+          isInvalid={Boolean(errors.dateRequested)}
+          {...register("dateRequested", {
+            required: true,
+            // pattern: isodate_regex,
           })}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.description?.message}
+          {errors.dateRequested && "Date Requested is required. "}
         </Form.Control.Feedback>
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="dateRequested">Date Requested (in UTC)</Form.Label>
+        <Form.Control
+          data-testid={testIdPrefix + "-dateRequested"}
+          id="dateRequested"
+          type="datetime-local"
+          isInvalid={Boolean(errors.dateRequested)}
+          {...register("dateRequested", {
+            required: true,
+            // pattern: isodate_regex,
+          })}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.dateRequested && "Date Requested is required. "}
+        </Form.Control.Feedback>
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+          <Form.Label htmlFor="done">
+            Done? (if checked, job will be marked as done)
+          </Form.Label>
+          <Form.Check
+            data-testid={testIdPrefix + "-done"}
+            type="checkbox"
+            id="done"
+            {...register("Done")}
+          />
       </Form.Group>
 
       <Button type="submit" data-testid={testIdPrefix + "-submit"}>
