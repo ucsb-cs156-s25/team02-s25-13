@@ -61,7 +61,7 @@ function ArticleForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="url">Description</Form.Label>
+        <Form.Label htmlFor="url">Url</Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-url"}
           id="url"
@@ -104,7 +104,7 @@ function ArticleForm({
           type="text"
           isInvalid={Boolean(errors.email)}
           {...register("email", {
-            required: "Explanation is required.",
+            required: "Email is required.",
             maxLength: {
               value: 255,
               message: "Max length 255 characters",
