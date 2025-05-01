@@ -13,6 +13,10 @@ function MenuItemReviewForm({
     formState: { errors },
     handleSubmit,
   } = useForm({ defaultValues: initialContents || {} });
+
+  const isodate_regex =
+    /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
+
   // Stryker restore all
 
   const navigate = useNavigate();
@@ -100,42 +104,21 @@ function MenuItemReviewForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="reviewerEmail">reviewerEmail</Form.Label>
-        <Form.Control
-          data-testid={testIdPrefix + "-reviewerEmail"}
-          id="reviewerEmail"
-          type="text"
-          isInvalid={Boolean(errors.description)}
-          {...register("reviewerEmail", {
-            required: "ReviewerEmail is required.",
-            maxLength: {
-              value: 255,
-              message: "Max length 255 characters",
-            },
-          })}
-        />
-        <Form.Control.Feedback type="invalid">
-          {errors.reviewerEmail?.message}
-        </Form.Control.Feedback>
-      </Form.Group>
-
-      <Form.Group className="mb-3">
-        <Form.Label htmlFor="dateReviewed">dateReviewed</Form.Label>
+        <Form.Label htmlFor="dateReviewed">
+          dateReviewed (iso format)
+        </Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-dateReviewed"}
           id="dateReviewed"
-          type="text"
-          isInvalid={Boolean(errors.description)}
+          type="datetime-local"
+          isInvalid={Boolean(errors.dateReviewed)}
           {...register("dateReviewed", {
-            required: "DateReviewed is required.",
-            maxLength: {
-              value: 255,
-              message: "Max length 255 characters",
-            },
+            required: true,
+            pattern: isodate_regex,
           })}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.dateReviewed?.message}
+          {errors.dateReviewed && "DateReviewed is required. "}
         </Form.Control.Feedback>
       </Form.Group>
 
