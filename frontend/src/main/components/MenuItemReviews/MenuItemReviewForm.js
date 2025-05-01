@@ -50,7 +50,7 @@ function MenuItemReviewForm({
             required: "ItemId is required.",
             maxLength: {
               value: 255,
-              message: "Max length 255 characters",
+              message: "Max length 255 characters for itemId",
             },
           })}
         />
@@ -70,7 +70,7 @@ function MenuItemReviewForm({
             required: "ReviewerEmail is required.",
             maxLength: {
               value: 255,
-              message: "Max length 255 characters",
+              message: "Max length 255 characters for email",
             },
           })}
         />
@@ -133,7 +133,7 @@ function MenuItemReviewForm({
             required: "Comments are required.",
             maxLength: {
               value: 255,
-              message: "Max length 255 characters",
+              message: "Max length 255 characters for comments",
             },
           })}
         />
