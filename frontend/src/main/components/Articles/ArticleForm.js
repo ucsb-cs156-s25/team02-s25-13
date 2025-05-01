@@ -117,21 +117,21 @@ function ArticleForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-          <Form.Label htmlFor="dateAdded">Date Added(iso format)</Form.Label>
-          <Form.Control
-            data-testid={testIdPrefix + "-dateAdded"}
-            id="dateAdded"
-            type="datetime-local"
-            isInvalid={Boolean(errors.dateAdded)}
-            {...register("dateAdded", {
-              required: true,
-              pattern: isodate_regex,
-            })}
-          />
-          <Form.Control.Feedback type="invalid">
-            {errors.dateAdded && "Date is required. "}
-          </Form.Control.Feedback>
-        </Form.Group>
+        <Form.Label htmlFor="dateAdded">Date Added(iso format)</Form.Label>
+        <Form.Control
+          data-testid={testIdPrefix + "-dateAdded"}
+          id="dateAdded"
+          type="datetime-local"
+          isInvalid={Boolean(errors.dateAdded)}
+          {...register("dateAdded", {
+            required: true,
+            pattern: isodate_regex,
+          })}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.dateAdded && "Date is required. "}
+        </Form.Control.Feedback>
+      </Form.Group>
 
       <Button type="submit" data-testid={testIdPrefix + "-submit"}>
         {buttonLabel}
