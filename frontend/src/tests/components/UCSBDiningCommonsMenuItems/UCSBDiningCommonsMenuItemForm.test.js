@@ -58,6 +58,19 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
 
     expect(await screen.findByTestId(`${testId}-id`)).toBeInTheDocument();
     expect(screen.getByText(`Id`)).toBeInTheDocument();
+    expect(screen.getByLabelText("Id")).toHaveValue(
+      String(ucsbDiningCommonsMenuItemFixtures.oneUcsbDiningCommonsMenuItem.id),
+    );
+    expect(screen.getByLabelText("Dining Commons Code")).toHaveValue(
+      ucsbDiningCommonsMenuItemFixtures.oneUcsbDiningCommonsMenuItem
+        .diningCommonsCode,
+    );
+    expect(screen.getByLabelText("Name")).toHaveValue(
+      ucsbDiningCommonsMenuItemFixtures.oneUcsbDiningCommonsMenuItem.name,
+    );
+    expect(screen.getByLabelText("Station")).toHaveValue(
+      ucsbDiningCommonsMenuItemFixtures.oneUcsbDiningCommonsMenuItem.station,
+    );
   });
 
   test("that navigate(-1) is called when Cancel is clicked", async () => {
