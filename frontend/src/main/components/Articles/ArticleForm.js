@@ -19,6 +19,11 @@ function ArticleForm({
 
   const testIdPrefix = "ArticleForm";
 
+  // Stryker disable Regex
+  const isodate_regex =
+    /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
+  // Stryker restore Regex
+
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
       {initialContents && (
@@ -70,6 +75,63 @@ function ArticleForm({
           {errors.url?.message}
         </Form.Control.Feedback>
       </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="explanation">Explanation</Form.Label>
+        <Form.Control
+          data-testid={testIdPrefix + "-explanation"}
+          id="explanation"
+          type="text"
+          isInvalid={Boolean(errors.explanation)}
+          {...register("explanation", {
+            required: "Explanation is required.",
+            maxLength: {
+              value: 255,
+              message: "Max length 255 characters",
+            },
+          })}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.explanation?.message}
+        </Form.Control.Feedback>
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="email">Email</Form.Label>
+        <Form.Control
+          data-testid={testIdPrefix + "-email"}
+          id="email"
+          type="text"
+          isInvalid={Boolean(errors.email)}
+          {...register("email", {
+            required: "Explanation is required.",
+            maxLength: {
+              value: 255,
+              message: "Max length 255 characters",
+            },
+          })}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.email?.message}
+        </Form.Control.Feedback>
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+          <Form.Label htmlFor="dateAdded">Date Added(iso format)</Form.Label>
+          <Form.Control
+            data-testid={testIdPrefix + "-dateAdded"}
+            id="dateAdded"
+            type="datetime-local"
+            isInvalid={Boolean(errors.dateAdded)}
+            {...register("dateAdded", {
+              required: true,
+              pattern: isodate_regex,
+            })}
+          />
+          <Form.Control.Feedback type="invalid">
+            {errors.dateAdded && "Date is required. "}
+          </Form.Control.Feedback>
+        </Form.Group>
 
       <Button type="submit" data-testid={testIdPrefix + "-submit"}>
         {buttonLabel}
