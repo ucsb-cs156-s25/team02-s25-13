@@ -8,11 +8,20 @@ function RecommendationRequestForm({
   buttonLabel = "Create",
 }) {
   // Stryker disable all
+
+  const defaultValues = initialContents
+    ? {
+        ...initialContents,
+        // dateRequested: dateRequested.replace("AM", ""),
+        // dateNeeded: initialContents.dateNeeded.replace("AM", "11"),
+      }
+    : {};
+
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm({ defaultValues: initialContents || {} });
+  } = useForm({ defaultValues });
   // Stryker restore all
 
   const navigate = useNavigate();
@@ -56,7 +65,7 @@ function RecommendationRequestForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="professorEmail">Requester Email</Form.Label>
+        <Form.Label htmlFor="professorEmail">Professor Email</Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-professorEmail"}
           id="professorEmail"
@@ -108,37 +117,36 @@ function RecommendationRequestForm({
           })}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.dateRequested && "Date Requested is required. "}
+          {errors.dateRequested && "Date Requested is required."}
         </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="dateRequested">Date Requested (in UTC)</Form.Label>
+        <Form.Label htmlFor="dateNeeded">Date Needed (in UTC)</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-dateRequested"}
-          id="dateRequested"
+          data-testid={testIdPrefix + "-dateNeeded"}
+          id="dateNeeded"
           type="datetime-local"
-          isInvalid={Boolean(errors.dateRequested)}
-          {...register("dateRequested", {
+          isInvalid={Boolean(errors.dateNeeded)}
+          {...register("dateNeeded", {
             required: true,
-            // pattern: isodate_regex,
           })}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.dateRequested && "Date Requested is required. "}
+          {errors.dateNeeded && "Date Needed is required."}
         </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group className="mb-3">
-          <Form.Label htmlFor="done">
-            Done? (if checked, job will be marked as done)
-          </Form.Label>
-          <Form.Check
-            data-testid={testIdPrefix + "-done"}
-            type="checkbox"
-            id="done"
-            {...register("Done")}
-          />
+        <Form.Label htmlFor="done">
+          Done? (if checked, job will be marked as done)
+        </Form.Label>
+        <Form.Check
+          data-testid={testIdPrefix + "-done"}
+          type="checkbox"
+          id="done"
+          {...register("Done")}
+        />
       </Form.Group>
 
       <Button type="submit" data-testid={testIdPrefix + "-submit"}>
