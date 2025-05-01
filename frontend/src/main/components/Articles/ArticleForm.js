@@ -63,7 +63,7 @@ function ArticleForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="url">Url</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-url"}
+          data-testid={testIdPrefix}
           id="url"
           type="text"
           isInvalid={Boolean(errors.url)}
@@ -85,10 +85,6 @@ function ArticleForm({
           isInvalid={Boolean(errors.explanation)}
           {...register("explanation", {
             required: "Explanation is required.",
-            maxLength: {
-              value: 255,
-              message: "Max length 255 characters",
-            },
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -99,16 +95,12 @@ function ArticleForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="email">Email</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-email"}
+          data-testid={testIdPrefix}
           id="email"
           type="text"
           isInvalid={Boolean(errors.email)}
           {...register("email", {
             required: "Email is required.",
-            maxLength: {
-              value: 255,
-              message: "Max length 255 characters",
-            },
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -119,7 +111,7 @@ function ArticleForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="dateAdded">Date Added(iso format)</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-dateAdded"}
+          data-testid={testIdPrefix}
           id="dateAdded"
           type="datetime-local"
           isInvalid={Boolean(errors.dateAdded)}
@@ -133,7 +125,7 @@ function ArticleForm({
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Button type="submit" data-testid={testIdPrefix + "-submit"}>
+      <Button type="submit">
         {buttonLabel}
       </Button>
       <Button
