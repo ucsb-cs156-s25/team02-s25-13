@@ -112,7 +112,7 @@ describe("HelpRequestCreatePage tests", () => {
     fireEvent.change(tableOrBreakoutRoomField, {
       target: { value: "table13" },
     });
-    fireEvent.change(solvedField, { target: { value: false } });
+    fireEvent.click(solvedField);
     fireEvent.change(explanationField, { target: { value: "none" } });
 
     expect(submitButton).toBeInTheDocument();

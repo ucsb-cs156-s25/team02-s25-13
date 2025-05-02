@@ -3,7 +3,6 @@ import HelpRequestForm from "main/components/HelpRequest/HelpRequestForm";
 import { Navigate } from "react-router-dom";
 import { useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
-import { ExternalsPlugin } from "webpack";
 
 export default function HelpRequestCreatePage({ storybook = false }) {
   const objectToAxiosParams = (helpRequest) => ({
