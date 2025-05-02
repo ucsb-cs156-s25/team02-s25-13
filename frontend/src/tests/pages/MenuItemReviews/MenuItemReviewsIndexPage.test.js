@@ -95,15 +95,15 @@ describe("MenuItemReviewsIndexPage tests", () => {
       "7",
     );
 
-    const createMenuItemReviewsButton = screen.queryByText("Create MenuItemReviews");
+    const createMenuItemReviewsButton = screen.queryByText(
+      "Create MenuItemReviews",
+    );
     expect(createMenuItemReviewsButton).not.toBeInTheDocument();
 
     const itemId = screen.getByText("1");
     expect(itemId).toBeInTheDocument();
 
-    const reviewerEmail = screen.getByText(
-      "cgaucho@ucsb.edu",
-    );
+    const reviewerEmail = screen.getByText("cgaucho@ucsb.edu");
     expect(reviewerEmail).toBeInTheDocument();
 
     const stars = screen.getByText("3");
@@ -112,9 +112,7 @@ describe("MenuItemReviewsIndexPage tests", () => {
     const dateReviewed = screen.getByText("2025-04-28T21:28:44.426");
     expect(dateReviewed).toBeInTheDocument();
 
-    const comments = screen.getByText(
-      "mac and cheese needs more cheese",
-    );
+    const comments = screen.getByText("mac and cheese needs more cheese");
     expect(comments).toBeInTheDocument();
 
     // for non-admin users, details button is visible, but the edit and delete buttons should not be visible
@@ -158,7 +156,7 @@ describe("MenuItemReviewsIndexPage tests", () => {
     axiosMock
       .onGet("/api/menuitemreviews/all")
       .reply(200, menuItemReviewFixtures.threeMenuItemReviews);
-      axiosMock
+    axiosMock
       .onDelete("/api/menuitemreviews")
       .reply(200, "Review with id 5 was deleted");
 
