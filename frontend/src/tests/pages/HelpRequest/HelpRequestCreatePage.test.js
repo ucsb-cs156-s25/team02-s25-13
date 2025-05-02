@@ -123,7 +123,7 @@ describe("HelpRequestCreatePage tests", () => {
 
     expect(axiosMock.history.post[0].params).toEqual({
       explanation: "none",
-      solved: false,
+      solved: true,
       tableOrBreakoutRoom: "table13",
       requestTime: "2022-02-02T00:00",
       teamId: "team01",
