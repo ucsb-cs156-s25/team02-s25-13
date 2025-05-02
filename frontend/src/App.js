@@ -18,6 +18,9 @@ import RecommendationRequestEditPage from "main/pages/RecommendationRequest/Reco
 import ArticleIndexPage from "main/pages/Articles/ArticleIndexPage";
 import ArticleCreatePage from "main/pages/Articles/ArticleCreatePage";
 import ArticleEditPage from "main/pages/Articles/ArticleEditPage";
+import MenuItemReviewsIndexPage from "main/pages/MenuItemReviews/MenuItemReviewsIndexPage";
+import MenuItemReviewsCreatePage from "main/pages/MenuItemReviews/MenuItemReviewsCreatePage";
+import MenuItemReviewsEditPage from "main/pages/MenuItemReviews/MenuItemReviewsEditPage";
 
 import PlaceholderIndexPage from "main/pages/Placeholder/PlaceholderIndexPage";
 import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
@@ -120,6 +123,29 @@ function App() {
               exact
               path="/recommendationRequest/create"
               element={<RecommendationRequestCreatePage />}
+            />
+          </>
+        )}
+        {hasRole(currentUser, "ROLE_USER") && (
+          <>
+            <Route
+              exact
+              path="/menuitemreviews"
+              element={<MenuItemReviewsIndexPage />}
+            />
+          </>
+        )}
+        {hasRole(currentUser, "ROLE_ADMIN") && (
+          <>
+            <Route
+              exact
+              path="/menuitemreviews/edit/:id"
+              element={<MenuItemReviewsEditPage />}
+            />
+            <Route
+              exact
+              path="/menuitemreviews/create"
+              element={<MenuItemReviewsCreatePage />}
             />
           </>
         )}
