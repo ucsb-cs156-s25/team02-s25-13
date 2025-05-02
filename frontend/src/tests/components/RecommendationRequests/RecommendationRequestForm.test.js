@@ -107,6 +107,7 @@ describe("RecommendationRequestForm tests", () => {
 
     const requesterEmail = screen.getByTestId(`${testId}-requesterEmail`);
     fireEvent.change(requesterEmail, { target: { value: "a".repeat(256) } });
+    // fireEvent.click(done);
     fireEvent.click(submitButton);
 
     await waitFor(() => {
