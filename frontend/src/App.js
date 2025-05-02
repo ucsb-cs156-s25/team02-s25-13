@@ -11,7 +11,6 @@ import RestaurantIndexPage from "main/pages/Restaurants/RestaurantIndexPage";
 import RestaurantCreatePage from "main/pages/Restaurants/RestaurantCreatePage";
 import RestaurantEditPage from "main/pages/Restaurants/RestaurantEditPage";
 
-
 import RecommendationRequestIndexPage from "main/pages/RecommendationRequest/RecommendationRequestIndexPage";
 import RecommendationRequestCreatePage from "main/pages/RecommendationRequest/RecommendationRequestCreatePage";
 import RecommendationRequestEditPage from "main/pages/RecommendationRequest/RecommendationRequestEditPage";
@@ -19,7 +18,6 @@ import RecommendationRequestEditPage from "main/pages/RecommendationRequest/Reco
 import ArticleIndexPage from "main/pages/Articles/ArticleIndexPage";
 import ArticleCreatePage from "main/pages/Articles/ArticleCreatePage";
 import ArticleEditPage from "main/pages/Articles/ArticleEditPage";
-
 
 import PlaceholderIndexPage from "main/pages/Placeholder/PlaceholderIndexPage";
 import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
