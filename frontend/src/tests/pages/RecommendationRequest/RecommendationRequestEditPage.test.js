@@ -48,7 +48,9 @@ describe("RecommendationRequestEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/recommendationRequest", { params: { id: 17 } }).timeout();
+      axiosMock
+        .onGet("/api/recommendationRequest", { params: { id: 17 } })
+        .timeout();
     });
 
     const queryClient = new QueryClient();
@@ -63,7 +65,9 @@ describe("RecommendationRequestEditPage tests", () => {
         </QueryClientProvider>,
       );
       await screen.findByText("Edit Recommendation Request");
-      expect(screen.queryByTestId("RecommendationRequest-requesterEmail")).not.toBeInTheDocument();
+      expect(
+        screen.queryByTestId("RecommendationRequest-requesterEmail"),
+      ).not.toBeInTheDocument();
       restoreConsole();
     });
   });
@@ -80,15 +84,17 @@ describe("RecommendationRequestEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/recommendationRequest", { params: { id: 17 } }).reply(200, {
-        id: 17,
-        requesterEmail: "test",
-        professorEmail: "tests",
-        explanation: "testing",
-        dateRequested: "1111-11-11T11:11:11",
-        dateNeeded: "1111-11-11T11:11:12",
-        done: true,
-      });
+      axiosMock
+        .onGet("/api/recommendationRequest", { params: { id: 17 } })
+        .reply(200, {
+          id: 17,
+          requesterEmail: "test",
+          professorEmail: "tests",
+          explanation: "testing",
+          dateRequested: "1111-11-11T11:11:11",
+          dateNeeded: "1111-11-11T11:11:12",
+          done: true,
+        });
       axiosMock.onPut("/api/recommendationRequest").reply(200, {
         id: "17",
         requesterEmail: "best",
@@ -117,9 +123,13 @@ describe("RecommendationRequestEditPage tests", () => {
       const requesterEmailField = screen.getByLabelText("Requester Email");
       const professorEmailField = screen.getByLabelText("Professor Email");
       const explanationField = screen.getByLabelText("Explanation");
-      const dateRequestedField = screen.getByLabelText("Date Requested (in UTC)");
+      const dateRequestedField = screen.getByLabelText(
+        "Date Requested (in UTC)",
+      );
       const dateNeededField = screen.getByLabelText("Date Needed (in UTC)");
-      const doneField = screen.getByLabelText("Done? (if checked, job will be marked as done)");
+      const doneField = screen.getByLabelText(
+        "Done? (if checked, job will be marked as done)",
+      );
       const submitButton = screen.getByText("Update");
 
       expect(idField).toBeInTheDocument();
@@ -133,16 +143,16 @@ describe("RecommendationRequestEditPage tests", () => {
 
       expect(explanationField).toBeInTheDocument();
       expect(explanationField).toHaveValue("testing");
-      
+
       expect(dateRequestedField).toBeInTheDocument();
       expect(dateRequestedField).toHaveValue("1111-11-11T11:11:11.000");
-      
+
       expect(dateNeededField).toBeInTheDocument();
       expect(dateNeededField).toHaveValue("1111-11-11T11:11:12.000");
 
       expect(doneField).toBeInTheDocument();
       expect(doneField).toBeChecked();
-      
+
       expect(submitButton).toHaveTextContent("Update");
 
       fireEvent.change(requesterEmailField, {
@@ -170,7 +180,9 @@ describe("RecommendationRequestEditPage tests", () => {
         "Recommendation Request Updated - id: 17 requesterEmail: best",
       );
 
-      expect(mockNavigate).toHaveBeenCalledWith({ to: "/recommendationRequest" });
+      expect(mockNavigate).toHaveBeenCalledWith({
+        to: "/recommendationRequest",
+      });
 
       expect(axiosMock.history.put.length).toBe(1); // times called
       expect(axiosMock.history.put[0].params).toEqual({ id: 17 });
