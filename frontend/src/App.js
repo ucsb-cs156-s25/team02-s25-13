@@ -83,7 +83,7 @@ function App() {
             />
             <Route
               exact
-              path="/ucsbdates/create"
+              path="/ucsbdiningcommonsmenuitems/create"
               element={<UCSBDiningCommonsMenuItemsCreatePage />}
             />
           </>
