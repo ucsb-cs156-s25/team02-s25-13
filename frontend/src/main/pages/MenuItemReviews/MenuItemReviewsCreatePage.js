@@ -19,7 +19,7 @@ export default function MenuItemReviewsCreatePage({ storybook = false }) {
 
   const onSuccess = (menuitemreview) => {
     toast(
-      `New restaurant Created - id: ${menuitemreview.id} comments: ${menuitemreview.comments}`,
+      `New review created - id: ${menuitemreview.id} comments: ${menuitemreview.comments}`,
     );
   };
 
@@ -49,4 +49,3 @@ export default function MenuItemReviewsCreatePage({ storybook = false }) {
     </BasicLayout>
   );
 }
-
