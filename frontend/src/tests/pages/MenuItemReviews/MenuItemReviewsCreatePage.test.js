@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
+import MenuItemReviewsCreatePage from "main/pages/MenuItemReviews/MenuItemReviewsCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
@@ -8,7 +8,7 @@ import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 
-describe("PlaceholderCreatePage tests", () => {
+describe("MenuItemReviewsCreatePage tests", () => {
   const axiosMock = new AxiosMockAdapter(axios);
 
   const setupUserOnly = () => {
@@ -32,7 +32,7 @@ describe("PlaceholderCreatePage tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <PlaceholderCreatePage />
+          <MenuItemReviewsCreatePage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
