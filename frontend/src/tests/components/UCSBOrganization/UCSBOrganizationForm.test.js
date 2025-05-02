@@ -107,5 +107,44 @@ describe("UCSBOrganizationForm tests", () => {
     await waitFor(() => {
       expect(screen.getByText(/Max length 255 characters/)).toBeInTheDocument();
     });
+
+    const orgTranslationShortInput = screen.getByTestId(
+      `${testId}-orgTranslationShort`,
+    );
+    fireEvent.change(orgTranslationShortInput, {
+      target: { value: "a".repeat(256) },
+    });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(/Max length 255 characters./),
+      ).toBeInTheDocument();
+    });
+
+    const orgTranslationInput = screen.getByTestId(`${testId}-orgTranslation`);
+    fireEvent.change(orgTranslationInput, {
+      target: { value: "a".repeat(256) },
+    });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(/Max length 255 characters!/),
+      ).toBeInTheDocument();
+    });
+  });
+
+  test("orgCode input is disabled when initialContents is provided", async () => {
+    render(
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <UCSBOrganizationForm initialContents={{ someData: "test" }} />
+        </Router>
+      </QueryClientProvider>,
+    );
+
+    const orgCodeInput = screen.getByTestId("UCSBOrganizationForm-orgCode");
+    expect(orgCodeInput).toBeDisabled();
   });
 });

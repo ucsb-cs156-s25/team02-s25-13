@@ -57,7 +57,7 @@ function UCSBOrganizationForm({
             required: "Organization Translation Short is required.",
             maxLength: {
               value: 255,
-              message: "Max length 255 characters",
+              message: "Max length 255 characters.",
             },
           })}
         />
@@ -77,6 +77,10 @@ function UCSBOrganizationForm({
           isInvalid={Boolean(errors.orgTranslation)}
           {...register("orgTranslation", {
             required: "Organization Translation is required.",
+            maxLength: {
+              value: 255,
+              message: "Max length 255 characters!",
+            },
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -86,17 +90,10 @@ function UCSBOrganizationForm({
 
       <Form.Group className="mb-3">
         <Form.Label htmlFor="inactive">Inactive</Form.Label>
-        <Form.Check
-          data-testid={testIdPrefix + "-inactive"}
-          type="checkbox"
-          id="inactive"
-          {...register("inactive")}
-        />
+        <Form.Check type="checkbox" id="inactive" {...register("inactive")} />
       </Form.Group>
 
-      <Button type="submit" data-testid={testIdPrefix + "-submit"}>
-        {buttonLabel}
-      </Button>
+      <Button type="submit">{buttonLabel}</Button>
       <Button
         variant="Secondary"
         onClick={() => navigate(-1)}
