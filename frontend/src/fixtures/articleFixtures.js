@@ -19,9 +19,9 @@ const articleFixtures = {
     {
       id: 2,
       title: "No Really, How Do Birds Fly",
-      url: "https://www.britannica.com/animal/bird-animal/Flight",
+      url: "https://www.britannica.com/animal/bird-animal/Flights",
       explanation: "This is really how birds fly...",
-      email: "tuancle@ucsb.edu",
+      email: "tuancle@ucsb-23.edu",
       dateAdded: "2025-04-30T05:31:00",
     },
     {
@@ -29,7 +29,7 @@ const articleFixtures = {
       title: "No Really, Really, How Do Birds Fly",
       url: "https://www.schlitzaudubon.org/2022/09/19/the-physics-of-flight/",
       explanation: "This is really, really, how birds fly...",
-      email: "tuancle@ucsb.edu",
+      email: "tuancle@ucsb-25.edu",
       dateAdded: "2025-05-01T01:00:00",
     },
   ],
