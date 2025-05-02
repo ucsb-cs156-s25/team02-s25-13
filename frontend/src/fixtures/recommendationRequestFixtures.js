@@ -1,5 +1,5 @@
 const recommendationRequestFixtures = {
-  oneDate: {
+  oneRecommendationRequest: {
     id: 1,
     requesterEmail: "test",
     professorEmail: "test",
@@ -8,7 +8,7 @@ const recommendationRequestFixtures = {
     dateNeeded: "1111-11-11T11:11:11",
     done: true,
   },
-  threeDates: [
+  threeRecommendationRequests: [
     {
       id: 1,
       requesterEmail: "test",
