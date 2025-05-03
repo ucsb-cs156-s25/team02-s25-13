@@ -23,10 +23,18 @@
               "columns": [
                 {
                   "column": {
+                    "autoIncrement": true,
                     "constraints": {
                       "primaryKey": true,
-                      "primaryKeyName": "HELPREQUEST_PK"
+                      "primaryKeyName": "HELPREQUEST_PK",
+                      "nullable": false
                     },
+                    "name": "ID",
+                    "type": "BIGINT"
+                  }
+                },
+                {
+                  "column": {
                     "name": "REQUESTER_EMAIL",
                     "type": "VARCHAR(255)"
                   }
@@ -63,8 +71,8 @@
                     "name": "SOLVED",
                     "type": "BOOLEAN"
                   }
-                }]
-              ,
+                }
+              ],
               "tableName": "HELPREQUEST"
             }
           }
