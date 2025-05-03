@@ -5,19 +5,19 @@ import { useBackendMutation } from "main/utils/useBackend";
 import {
   cellToAxiosParamsDelete,
   onDeleteSuccess,
-} from "main/utils/ucsbDiningCommonsMenuItemUtils";
+} from "main/utils/UCSBOrganizationUtils";
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-export default function UCSBDiningCommonsMenuItemTable({
-  ucsbDiningCommonsMenuItems,
+export default function UCSBOrganizationTable({
+  organizations,
   currentUser,
-  testIdPrefix = "UCSBDiningCommonsMenuItemTable",
+  testIdPrefix = "UCSBOrganizationTable",
 }) {
   const navigate = useNavigate();
 
   const editCallback = (cell) => {
-    navigate(`/ucsbdiningcommonsmenuitems/edit/${cell.row.values.id}`);
+    navigate(`/ucsborganizations/edit/${cell.row.values.orgCode}`);
   };
 
   // Stryker disable all : hard to test for query caching
@@ -25,7 +25,7 @@ export default function UCSBDiningCommonsMenuItemTable({
   const deleteMutation = useBackendMutation(
     cellToAxiosParamsDelete,
     { onSuccess: onDeleteSuccess },
-    ["/api/ucsbdiningcommonsmenuitems/all"],
+    ["/api/ucsborganizations/all"],
   );
   // Stryker restore all
 
@@ -36,21 +36,21 @@ export default function UCSBDiningCommonsMenuItemTable({
 
   const columns = [
     {
-      Header: "id",
-      accessor: "id", // accessor is the "key" in the data
+      Header: "Organization Code",
+      accessor: "orgCode", // accessor is the "key" in the data
     },
 
     {
-      Header: "Dining Commons Code",
-      accessor: "diningCommonsCode",
+      Header: "Organization Translation Short",
+      accessor: "orgTranslationShort",
     },
     {
-      Header: "Name",
-      accessor: "name",
+      Header: "Organization Translation",
+      accessor: "orgTranslation",
     },
     {
-      Header: "Station",
-      accessor: "station",
+      Header: "Inactive",
+      accessor: "inactive",
     },
   ];
 
@@ -62,10 +62,6 @@ export default function UCSBDiningCommonsMenuItemTable({
   }
 
   return (
-    <OurTable
-      data={ucsbDiningCommonsMenuItems}
-      columns={columns}
-      testid={testIdPrefix}
-    />
+    <OurTable data={organizations} columns={columns} testid={testIdPrefix} />
   );
 }

@@ -1,54 +1,55 @@
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 import { useParams } from "react-router-dom";
-import ArticleForm from "main/components/Articles/ArticleForm";
+import UCSBOrganizationForm from "main/components/UCSBOrganization/UCSBOrganizationForm";
 import { Navigate } from "react-router-dom";
 import { useBackend, useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 
-export default function ArticleEditPage({ storybook = false }) {
-  let { id } = useParams();
+export default function UCSBOrganizationEditPage({ storybook = false }) {
+  let { orgCode } = useParams();
 
   const {
-    data: article,
+    data: organization,
     _error,
     _status,
   } = useBackend(
     // Stryker disable next-line all : don't test internal caching of React Query
-    [`/api/articles?id=${id}`],
+    [`/api/ucsborganizations?orgCode=${orgCode}`],
     {
       // Stryker disable next-line all : GET is the default, so mutating this to "" doesn't introduce a bug
       method: "GET",
-      url: `/api/articles`,
+      url: `/api/ucsborganizations`,
       params: {
-        id,
+        orgCode,
       },
     },
   );
 
-  const objectToAxiosPutParams = (article) => ({
-    url: "/api/articles",
+  const objectToAxiosPutParams = (organization) => ({
+    url: "/api/ucsborganizations",
     method: "PUT",
     params: {
-      id: article.id,
+      orgCode: organization.orgCode,
     },
     data: {
-      title: article.title,
-      url: article.url,
-      explanation: article.explanation,
-      email: article.email,
-      dateAdded: article.dateAdded,
+      orgCode: organization.orgCode,
+      orgTranslationShort: organization.orgTranslationShort,
+      orgTranslation: organization.orgTranslation,
+      inactive: organization.inactive,
     },
   });
 
-  const onSuccess = (article) => {
-    toast(`Article Updated - id: ${article.id} title: ${article.title}`);
+  const onSuccess = (organization) => {
+    toast(
+      `Organization Updated - orgTranslationShort: ${organization.orgTranslationShort} orgTranslation: ${organization.orgTranslation} inactive: ${organization.inactive}`,
+    );
   };
 
   const mutation = useBackendMutation(
     objectToAxiosPutParams,
     { onSuccess },
     // Stryker disable next-line all : hard to set up test for caching
-    [`/api/articles?id=${id}`],
+    [`/api/ucsborganizations?orgCode=${orgCode}`],
   );
 
   const { isSuccess } = mutation;
@@ -58,18 +59,18 @@ export default function ArticleEditPage({ storybook = false }) {
   };
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/articles" />;
+    return <Navigate to="/ucsborganizations" />;
   }
 
   return (
     <BasicLayout>
       <div className="pt-2">
-        <h1>Edit Article</h1>
-        {article && (
-          <ArticleForm
+        <h1>Edit Organization</h1>
+        {organization && (
+          <UCSBOrganizationForm
             submitAction={onSubmit}
             buttonLabel={"Update"}
-            initialContents={article}
+            initialContents={organization}
           />
         )}
       </div>
