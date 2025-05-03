@@ -63,7 +63,9 @@ describe("MenuItemReviewsEditPage tests", () => {
         </QueryClientProvider>,
       );
       await screen.findByText("Edit MenuItemReview");
-      expect(screen.queryByTestId("MenuItemReviews-name")).not.toBeInTheDocument();
+      expect(
+        screen.queryByTestId("MenuItemReviews-name"),
+      ).not.toBeInTheDocument();
       restoreConsole();
     });
   });
@@ -80,14 +82,16 @@ describe("MenuItemReviewsEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/menuitemreviews", { params: { id: 17 } }).reply(200, {
-        id: 17,
-        itemId: 1,
-        reviewerEmail: "cgaucho@ucsb.edu",
-        stars: 5,
-        dateReviewed: "2025-05-08T11:05",
-      comments: "Great food!",
-      });
+      axiosMock
+        .onGet("/api/menuitemreviews", { params: { id: 17 } })
+        .reply(200, {
+          id: 17,
+          itemId: 1,
+          reviewerEmail: "cgaucho@ucsb.edu",
+          stars: 5,
+          dateReviewed: "2025-05-08T11:05",
+          comments: "Great food!",
+        });
       axiosMock.onPut("/api/menuitemreviews").reply(200, {
         id: "17",
         itemId: "1",
@@ -95,7 +99,6 @@ describe("MenuItemReviewsEditPage tests", () => {
         stars: "3",
         dateReviewed: "2025-05-08T11:05",
         comments: "mid",
-
       });
     });
 
@@ -114,9 +117,13 @@ describe("MenuItemReviewsEditPage tests", () => {
 
       const idField = screen.getByTestId("MenuItemReviewForm-id");
       const itemIDField = screen.getByTestId("MenuItemReviewForm-itemId");
-      const reviewerEmailField = screen.getByTestId("MenuItemReviewForm-reviewerEmail");
+      const reviewerEmailField = screen.getByTestId(
+        "MenuItemReviewForm-reviewerEmail",
+      );
       const starsField = screen.getByTestId("MenuItemReviewForm-stars");
-      const dateReviewedField = screen.getByTestId("MenuItemReviewForm-dateReviewed");
+      const dateReviewedField = screen.getByTestId(
+        "MenuItemReviewForm-dateReviewed",
+      );
       const commentsField = screen.getByTestId("MenuItemReviewForm-comments");
 
       const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
