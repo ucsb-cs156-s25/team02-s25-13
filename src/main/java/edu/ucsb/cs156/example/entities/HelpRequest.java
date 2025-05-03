@@ -9,7 +9,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Builder
-@Entity(name = "helprequests")
+@Entity(name = "helprequest")
 @EntityListeners(AuditingEntityListener.class)
 public class HelpRequest {
     @Id
