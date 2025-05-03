@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import MenuItemReviewsCreatePage from "main/pages/MenuItemReviews/MenuItemReviewsCreatePage";
+import UCSBDiningCommonsMenuItemsCreatePage from "main/pages/UCSBDiningCommonsMenuItems/UCSBDiningCommonsMenuItemsCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
@@ -32,7 +32,7 @@ jest.mock("react-router-dom", () => {
   };
 });
 
-describe("MenuItemReviewsCreatePage tests", () => {
+describe("UCSBDiningCommonsMenuItemsCreatePage tests", () => {
   const axiosMock = new AxiosMockAdapter(axios);
 
   beforeEach(() => {
@@ -52,86 +52,74 @@ describe("MenuItemReviewsCreatePage tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <MenuItemReviewsCreatePage />
+          <UCSBDiningCommonsMenuItemsCreatePage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
 
     await waitFor(() => {
-      expect(screen.getByLabelText("comments")).toBeInTheDocument();
+      expect(screen.getByLabelText("Name")).toBeInTheDocument();
     });
   });
 
-  test("on submit, makes request to backend, and redirects to /menuitemreviews", async () => {
+  test("on submit, makes request to backend, and redirects to /ucsbdiningcommonsmenuitems", async () => {
     const queryClient = new QueryClient();
-    const menuitemreview = {
-      id: 3,
-      itemId: 1,
-      reviewerEmail: "cgaucho@ucsb.edu",
-      stars: 5,
-      dateReviewed: "2025-05-08T11:05:00",
-      comments: "Great food!",
+    const ucsbDiningCommonsMenuItem = {
+      id: 1,
+      diningCommonsCode: "dlg",
+      name: "muffin",
+      station: "bakery",
     };
 
-    axiosMock.onPost("/api/menuitemreviews/post").reply(202, menuitemreview);
+    axiosMock
+      .onPost("/api/ucsbdiningcommonsmenuitems/post")
+      .reply(202, ucsbDiningCommonsMenuItem);
 
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <MenuItemReviewsCreatePage />
+          <UCSBDiningCommonsMenuItemsCreatePage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
 
     await waitFor(() => {
-      expect(screen.getByLabelText("itemId")).toBeInTheDocument();
+      expect(screen.getByLabelText("Name")).toBeInTheDocument();
     });
 
-    const itemIdInput = screen.getByLabelText("itemId");
-    expect(itemIdInput).toBeInTheDocument();
+    const diningCommonsCodeInput = screen.getByLabelText("Dining Commons Code");
+    expect(diningCommonsCodeInput).toBeInTheDocument();
 
-    const reviewerEmailInput = screen.getByLabelText("reviewerEmail");
-    expect(reviewerEmailInput).toBeInTheDocument();
+    const nameInput = screen.getByLabelText("Name");
+    expect(nameInput).toBeInTheDocument();
 
-    const starsInput = screen.getByLabelText("stars");
-    expect(starsInput).toBeInTheDocument();
-
-    const dateReviewedInput = screen.getByLabelText(
-      "dateReviewed (iso format)",
-    );
-    expect(dateReviewedInput).toBeInTheDocument();
-
-    const commentsInput = screen.getByLabelText("comments");
-    expect(commentsInput).toBeInTheDocument();
+    const stationInput = screen.getByLabelText("Station");
+    expect(stationInput).toBeInTheDocument();
 
     const createButton = screen.getByText("Create");
     expect(createButton).toBeInTheDocument();
 
-    fireEvent.change(itemIdInput, { target: { value: 1 } });
-    fireEvent.change(reviewerEmailInput, {
-      target: { value: "cgaucho@ucsb.edu" },
+    fireEvent.change(diningCommonsCodeInput, { target: { value: "dlg" } });
+    fireEvent.change(nameInput, { target: { value: "muffin" } });
+    fireEvent.change(stationInput, {
+      target: { value: "bakery" },
     });
-    fireEvent.change(starsInput, { target: { value: 5 } });
-    fireEvent.change(dateReviewedInput, {
-      target: { value: "2025-05-08T11:05:00" },
-    });
-    fireEvent.change(commentsInput, { target: { value: "Great food!" } });
     fireEvent.click(createButton);
 
     await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
 
     expect(axiosMock.history.post[0].params).toEqual({
-      itemID: "1",
-      reviewerEmail: "cgaucho@ucsb.edu",
-      stars: "5",
-      reviewDate: "2025-05-08T11:05",
-      comments: "Great food!",
+      diningCommonsCode: "dlg",
+      name: "muffin",
+      station: "bakery",
     });
 
     // assert - check that the toast was called with the expected message
     expect(mockToast).toHaveBeenCalledWith(
-      "New review created - id: 3 comments: Great food!",
+      "New Menu Item Created - id: 1 name: muffin",
     );
-    expect(mockNavigate).toHaveBeenCalledWith({ to: "/menuitemreviews" });
+    expect(mockNavigate).toHaveBeenCalledWith({
+      to: "/ucsbdiningcommonsmenuitems",
+    });
   });
 });

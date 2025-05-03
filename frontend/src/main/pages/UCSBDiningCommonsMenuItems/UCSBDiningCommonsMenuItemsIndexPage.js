@@ -2,21 +2,21 @@ import React from "react";
 import { useBackend } from "main/utils/useBackend";
 
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-import RecommendationRequestTable from "main/components/RecommendationRequests/RecommendationRequestTable";
+import UCSBDiningCommonsMenuItemTable from "main/components/UCSBDiningCommonsMenuItems/UCSBDiningCommonsMenuItemTable";
 import { useCurrentUser, hasRole } from "main/utils/currentUser";
 import { Button } from "react-bootstrap";
 
-export default function RecommendationRequestIndexPage() {
+export default function RestaurantIndexPage() {
   const currentUser = useCurrentUser();
 
   const {
-    data: recommendationRequests,
+    data: ucsbDiningCommonsMenuItems,
     error: _error,
     status: _status,
   } = useBackend(
     // Stryker disable next-line all : don't test internal caching of React Query
-    ["/api/recommendationRequest/all"],
-    { method: "GET", url: "/api/recommendationRequest/all" },
+    ["/api/ucsbdiningcommonsmenuitems/all"],
+    { method: "GET", url: "/api/ucsbdiningcommonsmenuitems/all" },
     // Stryker disable next-line all : don't test default value of empty list
     [],
   );
@@ -26,10 +26,10 @@ export default function RecommendationRequestIndexPage() {
       return (
         <Button
           variant="primary"
-          href="/recommendationRequest/create"
+          href="/ucsbdiningcommonsmenuitems/create"
           style={{ float: "right" }}
         >
-          Create Recommendation Request
+          Create Menu Item
         </Button>
       );
     }
@@ -39,9 +39,9 @@ export default function RecommendationRequestIndexPage() {
     <BasicLayout>
       <div className="pt-2">
         {createButton()}
-        <h1>Recommendation Requests</h1>
-        <RecommendationRequestTable
-          recommendationRequests={recommendationRequests}
+        <h1>UCSB Dining Commons Menu Items</h1>
+        <UCSBDiningCommonsMenuItemTable
+          ucsbDiningCommonsMenuItems={ucsbDiningCommonsMenuItems}
           currentUser={currentUser}
         />
       </div>

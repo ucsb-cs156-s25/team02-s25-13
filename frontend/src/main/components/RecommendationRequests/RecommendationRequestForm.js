@@ -145,7 +145,7 @@ function RecommendationRequestForm({
           // data-testid={testIdPrefix + "-done"}
           type="checkbox"
           id="done"
-          {...register("Done")}
+          {...register("done")}
         />
       </Form.Group>
 
