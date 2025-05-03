@@ -11,7 +11,7 @@
             "not": [
               {
                 "tableExists": {
-                  "tableName": "HELPREQUEST"
+                  "tableName": "HELP_REQUEST"
                 }
               }
             ]
@@ -23,17 +23,10 @@
               "columns": [
                 {
                   "column": {
-                    "autoIncrement": true,
                     "constraints": {
                       "primaryKey": true,
-                      "primaryKeyName": "HELPREQUEST_PK"
+                      "primaryKeyName": "HelpRequest_PK"
                     },
-                    "name": "ID",
-                    "type": "BIGINT"
-                  }
-                },
-                {
-                  "column": {
                     "name": "REQUESTER_EMAIL",
                     "type": "VARCHAR(255)"
                   }
@@ -70,9 +63,9 @@
                     "name": "SOLVED",
                     "type": "BOOLEAN"
                   }
-                }
-              ],
-              "tableName": "HELPREQUEST"
+                }]
+              ,
+              "tableName": "HELP_REQUEST"
             }
           }
         ]
