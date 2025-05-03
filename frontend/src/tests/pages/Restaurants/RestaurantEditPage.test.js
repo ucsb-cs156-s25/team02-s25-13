@@ -94,7 +94,7 @@ describe("RestaurantEditPage tests", () => {
 
     const queryClient = new QueryClient();
 
-    test("Is populated with the data provided", async () => {
+    test("Is populated with the data provided and changes when the data is changed", async () => {
       render(
         <QueryClientProvider client={queryClient}>
           <MemoryRouter>
