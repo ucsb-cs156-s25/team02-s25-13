@@ -219,10 +219,7 @@ describe("UserTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <HelpRequestTable
-            requests={undefined}
-            currentUser={currentUser}
-          />
+          <HelpRequestTable requests={undefined} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>,
     );
@@ -230,7 +227,9 @@ describe("UserTable tests", () => {
     // There should be no rows rendered
     const testId = "HelpRequestTable";
     // Check that the first row does not exist
-    expect(screen.queryByTestId(`${testId}-cell-row-0-col-id`)).not.toBeInTheDocument();
+    expect(
+      screen.queryByTestId(`${testId}-cell-row-0-col-id`),
+    ).not.toBeInTheDocument();
 
     // Now, simulate a mutation by pushing to the default array (this is what a mutation operator would do)
     // This is a "meta" test: if the default array is mutated, the next render would show a row
@@ -240,10 +239,7 @@ describe("UserTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <HelpRequestTable
-            requests={undefined}
-            currentUser={currentUser}
-          />
+          <HelpRequestTable requests={undefined} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>,
     );
