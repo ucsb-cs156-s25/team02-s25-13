@@ -1,16 +1,21 @@
 package edu.ucsb.cs156.example.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
-import lombok.*;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor
 @Builder
 @Entity(name = "helprequest")
-@EntityListeners(AuditingEntityListener.class)
 public class HelpRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
