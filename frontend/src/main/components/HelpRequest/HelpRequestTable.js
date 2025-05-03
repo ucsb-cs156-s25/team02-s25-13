@@ -72,8 +72,8 @@ export default function HelpRequestTable({ requests, currentUser }) {
 
   return (
     <OurTable
-      data={requests ?? []}
-      columns={columns ?? []}
+      data={requests || []}
+      columns={columns}
       testid={"HelpRequestTable"}
     />
   );

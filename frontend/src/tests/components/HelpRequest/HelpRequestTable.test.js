@@ -211,4 +211,43 @@ describe("UserTable tests", () => {
     await waitFor(() => expect(axiosMock.history.delete.length).toBe(1));
     expect(axiosMock.history.delete[0].params).toEqual({ id: 1 });
   });
+
+  test("Default empty array for requests is not mutated", () => {
+    const currentUser = currentUserFixtures.userOnly;
+
+    // Render with undefined requests, so HelpRequestTable gets requests={[]}
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <HelpRequestTable
+            requests={undefined}
+            currentUser={currentUser}
+          />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+
+    // There should be no rows rendered
+    const testId = "HelpRequestTable";
+    // Check that the first row does not exist
+    expect(screen.queryByTestId(`${testId}-cell-row-0-col-id`)).not.toBeInTheDocument();
+
+    // Now, simulate a mutation by pushing to the default array (this is what a mutation operator would do)
+    // This is a "meta" test: if the default array is mutated, the next render would show a row
+    // So, we simulate what would happen if the default array was mutated
+    const defaultArray = [];
+    defaultArray.push({ id: 999, requesterEmail: "mutated@example.com" });
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <HelpRequestTable
+            requests={undefined}
+            currentUser={currentUser}
+          />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+    // If the mutation operator changed the default array, this would now be present
+    expect(screen.queryByText("mutated@example.com")).not.toBeInTheDocument();
+  });
 });

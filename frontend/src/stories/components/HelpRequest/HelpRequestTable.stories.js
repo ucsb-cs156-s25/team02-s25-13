@@ -17,6 +17,7 @@ export const Empty = Template.bind({});
 
 Empty.args = {
   requests: [],
+  currentUser: currentUserFixtures.userOnly,
 };
 
 export const ThreeItemsOrdinaryUser = Template.bind({});
