@@ -11,7 +11,7 @@
             "not": [
               {
                 "tableExists": {
-                  "tableName": "HELP_REQUEST"
+                  "tableName": "HELPREQUEST"
                 }
               }
             ]
@@ -23,17 +23,24 @@
               "columns": [
                 {
                   "column": {
+                    "autoIncrement": true,
                     "constraints": {
                       "primaryKey": true,
-                      "primaryKeyName": "HelpRequest_PK"
+                      "primaryKeyName": "HELPREQUEST_PK"
                     },
+                    "name": "ID",
+                    "type": "BIGINT"
+                  }
+                },
+                {
+                  "column": {
                     "name": "REQUESTER_EMAIL",
                     "type": "VARCHAR(255)"
                   }
                 },
                 {
                   "column": {
-                    "name": "TEAMID",
+                    "name": "TEAM_ID",
                     "type": "VARCHAR(255)"
                   }
                 },
@@ -65,7 +72,7 @@
                   }
                 }]
               ,
-              "tableName": "HELP_REQUEST"
+              "tableName": "HELPREQUEST"
             }
           }
         ]

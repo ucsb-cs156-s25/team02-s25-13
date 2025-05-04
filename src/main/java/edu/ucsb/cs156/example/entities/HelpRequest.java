@@ -1,24 +1,42 @@
 package edu.ucsb.cs156.example.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
-import lombok.*;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor
 @Builder
-@Entity(name = "helprequests")
-@EntityListeners(AuditingEntityListener.class)
+@Entity(name = "helprequest")
 public class HelpRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @Column(name = "REQUESTER_EMAIL")
     private String requesterEmail;
+
+    @Column(name = "TEAM_ID")
     private String teamId;
+
+    @Column(name = "TABLE_OR_BREAKOUT_ROOM")
     private String tableOrBreakoutRoom;
+
+    @Column(name = "REQUEST_TIME")
     private LocalDateTime requestTime;
+
+    @Column(name = "EXPLANATION")
     private String explanation;
+
+    @Column(name = "SOLVED")
     private boolean solved;
 }
