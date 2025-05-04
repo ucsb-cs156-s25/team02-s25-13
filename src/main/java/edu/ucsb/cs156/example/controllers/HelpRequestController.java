@@ -63,15 +63,15 @@ public class HelpRequestController extends ApiController {
     @GetMapping("")
     public HelpRequest getById(
             @Parameter(name="id") @RequestParam Long id) {
-        HelpRequest helpRequest = helpRequestRepository.findById(id)
+        HelpRequest helprequest = helpRequestRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(HelpRequest.class, id));
 
-        return helpRequest;
+        return helprequest;
     }
 
     /**
      * Create a new helpRequest
-     * 
+     * @param id
      * @param requesterEmail 
      * @param teamId     
      * @param tableOrBreakoutRoom

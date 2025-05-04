@@ -165,7 +165,7 @@ describe("UserTable tests", () => {
     fireEvent.click(editButton);
 
     await waitFor(() =>
-      expect(mockedNavigate).toHaveBeenCalledWith("/help_request/edit/1"),
+      expect(mockedNavigate).toHaveBeenCalledWith("/helprequest/edit/1"),
     );
   });
 
@@ -175,7 +175,7 @@ describe("UserTable tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
     axiosMock
-      .onDelete("/api/help_request")
+      .onDelete("/api/helprequest")
       .reply(200, { message: "HelpRequest deleted" });
 
     // act - render the component

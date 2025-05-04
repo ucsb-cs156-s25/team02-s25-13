@@ -49,7 +49,7 @@ describe("HelpRequestEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/help_request", { params: { id: 17 } }).timeout();
+      axiosMock.onGet("/api/helprequest", { params: { id: 17 } }).timeout();
     });
 
     const queryClient = new QueryClient();
@@ -83,7 +83,7 @@ describe("HelpRequestEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/help_request", { params: { id: 17 } }).reply(200, {
+      axiosMock.onGet("/api/helprequest", { params: { id: 17 } }).reply(200, {
         id: 17,
         requesterEmail: "johndoe@gmail.com",
         teamId: "team01",
@@ -92,7 +92,7 @@ describe("HelpRequestEditPage tests", () => {
         solved: false,
         explanation: "none",
       });
-      axiosMock.onPut("/api/help_request").reply(200, {
+      axiosMock.onPut("/api/helprequest").reply(200, {
         id: "17",
         requesterEmail: "janedoe@gmail.com",
         teamId: "team02",
@@ -210,7 +210,7 @@ describe("HelpRequestEditPage tests", () => {
       expect(mockToast).toBeCalledWith(
         "HelpRequest Updated - id: 17 requester email: janedoe@gmail.com",
       );
-      expect(mockNavigate).toBeCalledWith({ to: "/help_request" });
+      expect(mockNavigate).toBeCalledWith({ to: "/helprequest" });
 
       expect(axiosMock.history.put.length).toBe(1); // times called
       expect(axiosMock.history.put[0].params).toEqual({ id: 17 });

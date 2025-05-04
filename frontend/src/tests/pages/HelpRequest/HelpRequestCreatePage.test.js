@@ -74,7 +74,7 @@ describe("HelpRequestCreatePage tests", () => {
       explanation: "none",
     };
 
-    axiosMock.onPost("/api/help_request/post").reply(202, helpRequest);
+    axiosMock.onPost("/api/helprequest/post").reply(202, helpRequest);
 
     render(
       <QueryClientProvider client={queryClient}>
@@ -133,6 +133,6 @@ describe("HelpRequestCreatePage tests", () => {
     expect(mockToast).toBeCalledWith(
       "New helpRequest Created - id: 17 requester email: johndoe@gmail.com",
     );
-    expect(mockNavigate).toBeCalledWith({ to: "/help_request" });
+    expect(mockNavigate).toBeCalledWith({ to: "/helprequest" });
   });
 });
