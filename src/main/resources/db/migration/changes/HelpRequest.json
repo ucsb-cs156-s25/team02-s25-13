@@ -11,7 +11,7 @@
             "not": [
               {
                 "tableExists": {
-                  "tableName": "HELP_REQUEST"
+                  "tableName": "HELPREQUEST"
                 }
               }
             ]
@@ -23,13 +23,18 @@
               "columns": [
                 {
                   "column": {
+                    "autoIncrement": true,
                     "constraints": {
                       "primaryKey": true,
                       "primaryKeyName": "HelpRequest_PK"
                     },
-                    "name": "REQUESTER_EMAIL",
-                    "type": "VARCHAR(255)"
+                    "name": "ID",
+                    "type": "BIGINT"
                   }
+                },
+                {
+                  "name": "REQUESTER_EMAIL",
+                  "type": "VARCHAR(255)"
                 },
                 {
                   "column": {
