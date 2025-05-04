@@ -71,7 +71,7 @@ public class HelpRequestController extends ApiController {
 
     /**
      * Create a new helpRequest
-     * @param id
+     * 
      * @param requesterEmail 
      * @param teamId     
      * @param tableOrBreakoutRoom
