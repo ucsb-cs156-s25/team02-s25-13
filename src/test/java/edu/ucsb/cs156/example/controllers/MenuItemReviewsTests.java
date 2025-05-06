@@ -119,6 +119,7 @@ public class MenuItemReviewsTests extends ControllerTestCase {
         LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
 
         MenuItemReview menuItemReview1 = MenuItemReview.builder()
+
                 .itemId(1)
                 .reviewerEmail("John Doe")
                 .stars(1)
