@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s25/team02-s25-13
 owner: ucsb-cs156-s25
 repo_name: team02-s25-13
-pull_requests: [{"author":{"id":"U_kgDOCM8Qxw","is_bot":false,"login":"k-nn-tht","name":"Kenneth Tan"},"headRefName":"Kenneth-RecommendationRequest-e2e_tests","number":118,"title":"Kenneth recommendation request e2e tests","url":"https://github.com/ucsb-cs156-s25/team02-s25-13/pull/118"},{"author":{"id":"MDQ6VXNlcjU0NzIwMjg2","is_bot":false,"login":"Leexe","name":"Tuan Le"},"headRefName":"tuan-articles-e2e-tests","number":116,"title":"Tuan - Articles End-To-End Tests","url":"https://github.com/ucsb-cs156-s25/team02-s25-13/pull/116"}]
+pull_requests: [{"author":{"id":"U_kgDOCM8Qxw","is_bot":false,"login":"k-nn-tht","name":"Kenneth Tan"},"headRefName":"Kenneth-RecommendationRequest-e2e_tests","number":118,"title":"Kenneth recommendation request e2e tests","url":"https://github.com/ucsb-cs156-s25/team02-s25-13/pull/118"}]
