@@ -79,7 +79,7 @@ public class RecommendationRequestWebIT extends WebTestCase {
         page.getByText("Recommendation Requests").click();
 
         assertThat(page.getByText("Create Recommendation Request")).not().isVisible();
-        assertThat(page.getByTestId("RecommendationRequestTable-cell-row-0-col-name")).not().isVisible();
+        assertThat(page.getByTestId("RecommendationRequestTable-cell-row-0-col-requesterEmail")).not().isVisible();
     }
 
     @Test
