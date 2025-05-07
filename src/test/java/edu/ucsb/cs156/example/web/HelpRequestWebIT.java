@@ -64,6 +64,6 @@ public class HelpRequestWebIT extends WebTestCase {
         page.getByText("Help Requests").click();
 
         assertThat(page.getByText("Create HelpRequest")).not().isVisible();
-        assertThat(page.getByTestId("HelpRequestTable-cell-row-0-col-name")).not().isVisible();
+        assertThat(page.getByTestId("HelpRequestTable-cell-row-0-col-requesterEmail")).not().isVisible();
     }
 }
